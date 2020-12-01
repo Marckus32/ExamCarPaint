@@ -12,6 +12,14 @@ class Helper {
         return mysqli_query($mysqli, $query);
     }
 
+    public function search($value)
+    {
+        global $mysqli;
+        $query = "SELECT * FROM `tbl_queue` WHERE `plate_no`='{$value}' AND is_completed = 0;";
+        $result = mysqli_query($mysqli, $query);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
     public function mark_complete($value)
     {
         global $mysqli;

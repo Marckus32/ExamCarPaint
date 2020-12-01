@@ -7,30 +7,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juan's Auto Paint</title>
+    <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
-    <h1>Juan's Auto Paint</h1>
+    <h1 class="header">JUAN'S AUTO PAINT</h1>
     <ul>
-        <li><a href="index.php">NEW PAINT JOB</a></li>
+        <li><a href="index.php" class="active">NEW PAINT JOB</a></li>
         <li><a href="paint_job.php">PAINT JOB</a></li>
     </ul>
-    <div>
+    <br><br>
+    <h1 class="center">New Paint Job</h1>
+    <br>
+    <div class="center">
         <img src="resources/images/gray.png" id="current-car-image">
+        <img src="resources/images/arrow.png" height="40" style="margin-bottom:50px;">
         <img src="resources/images/gray.png" id="target-car-image">
     </div>
-    <div>
+
+    <div class="ml">
         <form action="controller/CarPaintController.php" method="post">
             <input type="hidden" name="method" value="NEW_PAINT_JOB">
             <h4>Car Details</h4>
-            <table>
+            
+            <table style="width: 100%;" >
                 <tr>
                     <td>Plate No.</td>
-                    <td><input type="text" name="plate_no" required autocomplete="off"></td>
+                    <td><input type="text" class="form-control" name="plate_no" required autocomplete="off" style="float:right; width:97%;"></td>
                 </tr>
                 <tr>
                     <td>Current Color</td>
                     <td>
-                        <select name="current_color" onchange="change_color('current-car-image',this.value)">
+                        <select name="current_color" class="form-control" onchange="change_color('current-car-image',this.value)" style="float:right; width:100%;">
                             <option value=""></option>
                             <option value="red">Red</option>
                             <option value="blue">Blue</option>
@@ -41,7 +48,7 @@
                 <tr>
                     <td>Target Color</td>
                     <td>
-                        <select name="target_color" onchange="change_color('target-car-image',this.value)">
+                        <select name="target_color" class="form-control" onchange="change_color('target-car-image',this.value)" style="float:right; width:100%;">
                             <option value=""></option>
                             <option value="red">Red</option>
                             <option value="blue">Blue</option>
@@ -49,8 +56,12 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit" class="btn-submit">Submit</button></td>
+                </tr>
             </table>
-            <button type="submit">Submit</button>
+            
         </form>
     </div>
 </body>

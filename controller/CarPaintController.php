@@ -4,17 +4,22 @@
 
     if(!empty($_POST)){
         if($_POST['method'] == "NEW_PAINT_JOB"){
+            $exist = $helper->search($_POST['plate_no']);
+            if(count($exist) > 0){
+                header("location: ../paint_job.php");     
+                die;           
+            }
             $params = [
-                "plate_no"  => htmlspecialchars($_POST['plate_no']),
+                "plate_no"      => htmlspecialchars($_POST['plate_no']),
                 "current_color" => $_POST['current_color'],
-                "target_color" => $_POST['target_color'],
+                "target_color"  => $_POST['target_color'],
             ];
             $result = $helper->insert("tbl_queue",$params);
             if($result){
-                header("location: ../index.php");
+                header("location: ../paint_job.php");
             }
             else{
-                header("location: ../paint_job.php");
+                header("location: ../index.php");
             }
         }
 
@@ -39,5 +44,7 @@
         if($_POST['method'] == "DASHBOARD"){            
             echo json_encode($helper->dashboard());
         }
+
+        
 
     }
